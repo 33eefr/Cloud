@@ -7,6 +7,9 @@
 <title>成功</title>
 </head>
 <body>
-	被你发现了
+	<div>
+		<strong> welcome,${sessionScope.user.username}! </strong>
+	</div>
+		This is success page!
 </body>
 </html>

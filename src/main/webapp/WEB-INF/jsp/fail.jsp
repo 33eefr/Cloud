@@ -7,6 +7,6 @@
 <title>登录失败</title>
 </head>
 <body>
-	你来错地方了
+	登录失败，请<a href="tologin">点击这里</a>重新登录
 </body>
 </html>
