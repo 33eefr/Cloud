@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 别名 -->
+	<typeAliases>
+		<!-- 使用自动扫描包来定义别名，别名为类名 -->
+		<package name="com.cloud.pojo"/>
+	</typeAliases>
+	<!-- 配置映射文件mapper的位置 -->
+	<mappers>
+		<mapper resource="com/cloud/mapper/UserDaoMapper.xml"/>
+	</mappers>
+</configuration>
