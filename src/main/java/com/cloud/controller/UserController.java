@@ -50,7 +50,7 @@ public class UserController {
 		//若有user则添加到model里并且跳转到成功页面
 		if(user != null){
 			model.addAttribute("user",user);
-			return "redirect:/showUser";
+			return "main";
 		}
 		return "fail";
 	}
