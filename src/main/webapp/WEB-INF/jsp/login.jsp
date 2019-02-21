@@ -1,10 +1,9 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Cache-Control" content="no-cache">
-<meta http-equiv="Expires" content="0">
 <title>后台管理</title>
 <link href="css/login.css" rel="stylesheet" type="text/css" />
 </head>
@@ -16,7 +15,7 @@
 		</div>
 		<div class="login">
 			<div class="login_logo">
-				<img src="images/login_logo.png" /></a>
+				<img src="images/login_logo.png" />
 			</div>
 			<div class="login_name">
 				<p>咕咕云盘</p>
@@ -32,6 +31,7 @@
 					onblur="if(this.value==''){document.getElementById('password_text').style.display='block';this.style.display='none'};" />
 				<input value="登录" style="width: 100%;" type="submit">
 			</form>
+			<h3>没有账号？<a href="toregister">前往注册</a></h3>
 		</div>
 		<div class="copyright">咕咕有限公司 版权所有©2018-2019 技术支持电话：000-00000000</div>
 	</div>

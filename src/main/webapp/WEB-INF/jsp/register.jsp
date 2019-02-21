@@ -40,6 +40,8 @@
 				}
 				
 			}
+			
+			
 		</script>
 
 </head>
@@ -53,7 +55,7 @@
 		
 		邮箱：<input type="text" name="email" id="email"/><br><br>
 		
-		注册时间:<input type="text" name="registertime" id="registertime"/><br><br>
+		注册时间:<input type="text" name="register_time" id="register_time"/><br><br>
 		
 		<input type="submit" value="注册" />
 	</form>

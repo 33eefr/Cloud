@@ -38,6 +38,7 @@ public class UserController {
 		
 		userService.register(user);
 		System.out.println(user);
+		
 		return "login";	
 	}
 	
@@ -53,6 +54,7 @@ public class UserController {
 		}
 		return "fail";
 	}
+
 	//注销方法
 	@RequestMapping("/outLogin")
 	public String outLogin(HttpSession session){
