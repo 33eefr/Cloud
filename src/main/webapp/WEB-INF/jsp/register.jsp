@@ -58,12 +58,12 @@
 			<div class="login_name">
 				<p>咕咕云盘</p>
 			</div>
-			<form action="login" method="post" name="regForm" onsubmit="return checkForm()">
+			<form action="register" method="post" name="regForm" onsubmit="return checkForm()">
 				<input name="username" type="text" id="username" value="用户名" onfocus="this.value=''" onblur="if(this.value==''){this.value='用户名'}"> 
 				<span id="password_text" onclick="this.style.display='none';document.getElementById('password').style.display='block';document.getElementById('password').focus().select();">密码</span>
 				<input name="password" type="password" id="password" style="display: none;"
 					onblur="if(this.value==''){document.getElementById('password_text').style.display='block';this.style.display='none'};" />
-				<input name=repassword type="text" id="repassword" value="确认密码" onfocus="this.value=''" onblur="if(this.value==''){this.value='确认密码'}">
+				<input id="repassword" type="password" name="repassword" placeholder="确认密码"/>
 				<input name="email" type="text" id="email" value="邮箱" onfocus="this.value=''" onblur="if(this.value==''){this.value='邮箱'}">
 				
 				<input value="注册" style="width: 100%;" type="submit">
