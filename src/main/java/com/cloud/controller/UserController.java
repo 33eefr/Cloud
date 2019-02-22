@@ -1,9 +1,11 @@
 package com.cloud.controller;
 
+import java.io.File;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +52,15 @@ public class UserController {
 		//若有user则添加到model里并且跳转到成功页面
 		if(user != null){
 			session.setAttribute("user",user);
+		//登录同时创建以user_id命名的文件夹   2019/2/22
+		String userPath = "D:\\cloud"+File.separator+user.getUser_id();
+		
+		File userdir=new File(userPath);
+		
+		if(!userdir.exists()){//如果文件夹不存在
+			
+			userdir.mkdirs();//创建文件夹
+		}
 			return "main";
 		}
 		return "fail";
@@ -93,5 +104,24 @@ public class UserController {
 		System.out.println("成功删除"+i+"个用户");
 		return "redirect:/showUser";
 		
+	}
+	/*
+	 * 2019/2/22
+	 * 在用户目录下新建文件夹
+	 */
+	@RequestMapping("/createDir")
+	public String creatDir(User user,HttpServletRequest request) {
+		String user_id = request.getParameter("user_id");
+		String folderName = request.getParameter("folderName");
+		String userPath = "D:\\cloud"+File.separator+user_id+File.separator+folderName;
+		
+		File userdir=new File(userPath);
+		
+		if(!userdir.exists()){//如果文件夹不存在
+			
+			userdir.mkdirs();//创建文件夹
+		}
+		
+		return "main";		
 	}
 }

@@ -46,7 +46,8 @@
 							</form>
 						</li>
 						<li class="li">
-							<form action="" method="post">
+							<form action="createDir" method="post">
+								<input type="hidden" name="user_id" value="${sessionScope.user.user_id}">
 								文件夹名：<input type="text" name="folderName">
 								<input type="submit" value="新建文件夹">
 							</form>
