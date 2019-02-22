@@ -1,6 +1,6 @@
 package com.cloud.pojo;
 
-
+import java.util.Date;
 
 public class User {
 	
@@ -12,7 +12,7 @@ public class User {
 	
 	private String email;//邮箱
 	
-	private String register_time;//注册时间
+	private Date register_time;//注册时间
 
 	
 
@@ -24,11 +24,13 @@ public class User {
 		this.user_id = user_id;
 	}
 
-	public String getRegister_time() {
+	
+
+	public Date getRegister_time() {
 		return register_time;
 	}
 
-	public void setRegister_time(String register_time) {
+	public void setRegister_time(Date register_time) {
 		this.register_time = register_time;
 	}
 

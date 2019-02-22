@@ -18,6 +18,7 @@
 		<div id="clearBoth"></div>
 		<div id="middleDiv">
 			<div id="leftDiv">
+				<p style="margin-left: 20px;"><strong> welcome,${sessionScope.user.username}! </strong></p>
 				<p style="margin-left: 35px;font-size:20px"><a href="showUser">用户管理</a></p> 
 				<p style="margin-left: 35px;font-size:20px">文件管理</p>
 				<ul style="font-color:write;font-size:20px">

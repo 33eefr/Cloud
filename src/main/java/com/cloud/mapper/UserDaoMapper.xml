@@ -29,4 +29,8 @@
 		update cloud_user set username=#{username},password=#{password},email=#{email},register_time=#{register_time}
 		where user_id=#{user_id}
 	</update>
+	<delete id="deleteUser" parameterType="Integer">
+		delete from
+		cloud_user where user_id=#{user_id}
+	</delete>
 </mapper>

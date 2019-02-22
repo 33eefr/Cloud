@@ -17,4 +17,6 @@ public interface UserService {
 	public int updateUser(User user);
 	//查询一条数据
 	public User selectOne(Integer userid);
+	//删除用户
+	public int deleteUser(Integer usreid);
 }

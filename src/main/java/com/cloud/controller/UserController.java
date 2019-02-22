@@ -1,5 +1,6 @@
 package com.cloud.controller;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -7,7 +8,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -35,7 +35,7 @@ public class UserController {
 		}
 	@RequestMapping("/register")
 	public String register(User user) {
-		
+		user.setRegister_time(new Date());
 		userService.register(user);
 		System.out.println(user);
 		
@@ -44,12 +44,12 @@ public class UserController {
 	
 	//表单提交过来的路径
 	@RequestMapping("/login")
-	public String checkLogin(User user,Model model){
+	public String checkLogin(User user,HttpSession session){
 		//调用service方法
 		user = userService.checkLogin(user.getUsername(), user.getPassword());
 		//若有user则添加到model里并且跳转到成功页面
 		if(user != null){
-			model.addAttribute("user",user);
+			session.setAttribute("user",user);
 			return "main";
 		}
 		return "fail";
@@ -86,4 +86,12 @@ public class UserController {
 		System.out.println("成功修改"+ i +"条用户信息");
 		return "redirect:/showUser";	
 	}	
+	@RequestMapping("/deleteUser/{user_id}")
+	public String deleteUser(@PathVariable("user_id") Integer user_id) {
+		
+		int i = userService.deleteUser(user_id);
+		System.out.println("成功删除"+i+"个用户");
+		return "redirect:/showUser";
+		
+	}
 }

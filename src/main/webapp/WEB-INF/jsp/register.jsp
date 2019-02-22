@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>注册页面</title>
+<link href="css/login.css" rel="stylesheet" type="text/css" />
 <script>
 			function checkForm(){
 				//alert("aa");
@@ -46,18 +47,58 @@
 
 </head>
 <body>
-	<form action="register" method="post" name="regForm" onsubmit="return checkForm()" >
-		用户名:<input type="text" name="username" id="username"/><br><br>
-		
-		密码：  <input type="password" name="password" id="password"/><br><br>
-		
-		确认密码:<input type="password" name="repassword" id="repassword"/><br><br>
-		
-		邮箱：<input type="text" name="email" id="email"/><br><br>
-		
-		注册时间:<input type="text" name="register_time" id="register_time"/><br><br>
-		
-		<input type="submit" value="注册" />
-	</form>
+	<div class="login_box">
+		<div class="login_l_img">
+			<img src="images/login-img.png" />
+		</div>
+		<div class="login">
+			<div class="login_logo">
+				<img src="images/login_logo.png" />
+			</div>
+			<div class="login_name">
+				<p>咕咕云盘</p>
+			</div>
+			<form action="login" method="post" name="regForm" onsubmit="return checkForm()">
+				<input name="username" type="text" id="username" value="用户名" onfocus="this.value=''" onblur="if(this.value==''){this.value='用户名'}"> 
+				<span id="password_text" onclick="this.style.display='none';document.getElementById('password').style.display='block';document.getElementById('password').focus().select();">密码</span>
+				<input name="password" type="password" id="password" style="display: none;"
+					onblur="if(this.value==''){document.getElementById('password_text').style.display='block';this.style.display='none'};" />
+				<input name=repassword type="text" id="repassword" value="确认密码" onfocus="this.value=''" onblur="if(this.value==''){this.value='确认密码'}">
+				<input name="email" type="text" id="email" value="邮箱" onfocus="this.value=''" onblur="if(this.value==''){this.value='邮箱'}">
+				
+				<input value="注册" style="width: 100%;" type="submit">
+			</form>
+			<h3>记得账号>>>>>>>>>>>>>>>>>>><a href="tologin">直接登录</a></h3>
+		</div>
+	</div>
+	<!-- <center>
+		<font face="楷体" size="6" color="#000">注册界面</font>
+		<form action="register" method="post" name="regForm" onsubmit="return checkForm()" >
+		<table>
+		<tr>	
+			<th>用户名:</th>
+			<td><input type="text" name="username" id="username"/></td>
+		</tr>
+		<tr>	
+			<th>密码：</th>
+			<td><input type="password" name="password" id="password"/></td>
+		<tr>	
+			<th>确认密码:</th>
+			<td><input type="password" name="repassword" id="repassword"/></td>
+		<tr>
+			<th>邮箱：</th>
+			<td><input type="text" name="email" id="email"/></td>
+		</tr>
+		<tr>
+ 			<td colspan = "2" align = "center">
+ 		  		<input type="submit" value="注  册">    
+ 		  		<input type="reset" value="重  置">
+ 			</td>
+	  </tr>
+		</table>
+		</form>
+		<h3>记得账号<a href="tologin">直接登录</a></h3>
+	</center> -->
+	
 </body>
 </html>

@@ -5,6 +5,41 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">
+	
+	table {
+		width:90%;
+		background:#ccc;
+		 margin: 10px auto;
+		 border-collapse:collapse;
+	}
+/*border-collapse:collapse合并内外边距(去除表格单元格默认的2个像素内外边距*/
+ 	th, td {
+		height:25px;
+		line-height:25px;
+		text-align:center;
+		border:1px solid #ccc;
+	}
+	th {
+		background:#eee;
+		font-weight:normal;
+	}
+	tr {
+		background:#fff;
+	}
+	tr:hover {
+		background:#cc0;
+	}
+	td a {
+		color:#06f;
+		text-decoration:none;
+	}
+	td a:hover {
+		color:#06f;
+		text-decoration:underline;
+	} 
+
+</style>
 <title>用户管理</title>
 </head>
 <body>
@@ -27,7 +62,10 @@
 					<td>${user.password}</td>
 					<td>${user.email}</td>
 					<td>${user.register_time}</td>
-					<td> <a href="selectOne/${user.user_id}">修改</a></td>
+					<td> 
+						<a href="deleteUser/${user.user_id}">删除</a>
+						<a href="selectOne/${user.user_id}">修改</a>
+					</td>
 				</tr>
 			</c:forEach>
 		</table>
