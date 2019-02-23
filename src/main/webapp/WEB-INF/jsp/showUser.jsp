@@ -72,7 +72,10 @@
 		<form action="outLogin">
 			<table>
 				<tr>
-					<td><input type="submit" value="退出登录"></td>
+					<td>
+						<input type="submit" value="退出登录">
+						<a href="tomain">返回首页</a>
+					</td>
 				</tr>
 			</table>
 		</form>

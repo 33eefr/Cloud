@@ -20,7 +20,11 @@ import com.cloud.pojo.User;
 
 @Controller
 public class UserController {
-	
+	/*
+	 * 控制层方法
+	 * 程士豪
+	 * 
+	 */
 	@Autowired
 	private UserService userService;
 	
@@ -34,7 +38,15 @@ public class UserController {
 	@RequestMapping("/toregister")
 	public String toregister(){
 		return "register";
-		}
+	}
+	//正常访问主页面
+	@RequestMapping("/tomain")
+	public String tomain(){
+		return "main";
+	}
+	/*
+	 * 注册
+	 */
 	@RequestMapping("/register")
 	public String register(User user) {
 		user.setRegister_time(new Date());
@@ -44,7 +56,10 @@ public class UserController {
 		return "login";	
 	}
 	
-	//表单提交过来的路径
+	/*
+	 * 登录并创建用户id对应的文件夹
+	 * 表单提交过来的路径
+	 */
 	@RequestMapping("/login")
 	public String checkLogin(User user,HttpSession session){
 		//调用service方法
@@ -66,14 +81,20 @@ public class UserController {
 		return "fail";
 	}
 
-	//注销方法
+	/*
+	 *  注销方法
+	 *
+	 */
 	@RequestMapping("/outLogin")
 	public String outLogin(HttpSession session){
 		//通过session.invalidata()方法来注销当前的session
 		session.invalidate();
 		return "login";
 	}
-	//用户展示
+	/*
+	 *  用户信息展示
+	 *	查询语句
+	 */
 	@RequestMapping("/showUser")
 	public String showUser(Map<String,Object> map) {
 		
@@ -81,7 +102,10 @@ public class UserController {
 		map.put("lists", lists);
 		return "showUser";
 	}
-	//查询一条数据
+	/*
+	 * 查询一条数据
+	 * 方便删除/修改获取user_id
+	 */
 	@RequestMapping("/selectOne/{user_id}")
 	public String selectOne(@PathVariable("user_id") Integer user_id,Map<String,Object> map) {
 		
@@ -89,7 +113,10 @@ public class UserController {
 		map.put("user", user);
 		return "updateUser";
 	}
-	
+	/*
+	 * 根据user_id更新用户信息
+	 * 
+	 */
 	@RequestMapping(value="/updateUser")
 	public String updateUser(User user) {
 		
@@ -97,6 +124,10 @@ public class UserController {
 		System.out.println("成功修改"+ i +"条用户信息");
 		return "redirect:/showUser";	
 	}	
+	/*
+	 * 根据user_id删除用户
+	 * 
+	 */
 	@RequestMapping("/deleteUser/{user_id}")
 	public String deleteUser(@PathVariable("user_id") Integer user_id) {
 		
@@ -121,7 +152,7 @@ public class UserController {
 			
 			userdir.mkdirs();//创建文件夹
 		}
-		
+		System.out.println(folderName+"创建成功");
 		return "main";		
 	}
 }

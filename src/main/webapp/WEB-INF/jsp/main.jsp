@@ -10,7 +10,7 @@
 	
 </style>
 </head>
-<body>
+<body style="background-image: url('images/background.jpg');">
 	<div id="allDiv">
 		<div id="headerDiv">
 			<img id="banner" src="images/banner.gif" />
@@ -26,10 +26,10 @@
 					<li style="line-height:25px"><a href="#" target="_blank"><img id="photo" src="images/music.png" /></a></li>
 					<li style="line-height:25px"><a href="#" target="_blank"><img id="photo" src="images/video.png" /></a></li>
 					<li style="line-height:25px"><a href="#" target="_blank"><img id="photo" src="images/download.png" /></a></li> -->
-					<li style="line-height:50px"><a href="#" target="abc">图片</a></li>
-					<li style="line-height:50px"><a href="#" target="_blank">音频</a></li>
-					<li style="line-height:50px"><a href="#" target="_blank">视频</a></li>
-					<li style="line-height:50px"><a href="#" target="_blank">压缩包</a></li>
+					<li style="line-height:50px"><a href="file://localhost/D:\cloud\?${sessionScope.user.user_id}\photo"target="abc">图片</a></li>
+					<li style="line-height:50px"><a href="#" target="abc">音频</a></li>
+					<li style="line-height:50px"><a href="#" target="abc">视频</a></li>
+					<li style="line-height:50px"><a href="#" target="abc">压缩包</a></li>
 				</ul></div>
 			<div id="rightDiv">
 				<div id="topDiv">

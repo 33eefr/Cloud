@@ -1,4 +1,9 @@
 @charset "utf-8";
+		div{
+			filter:alpha(Opacity=80);
+			-moz-opacity:0.9;
+			opacity: 0.9;
+		} 
 		#allDiv{
 		margin:0 auto;
 		width:1000px;

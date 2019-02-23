@@ -22,9 +22,7 @@
 			</div>
 			<form action="login" method="post">
 				<input name="username" type="text" value="用户名" onfocus="this.value=''" onblur="if(this.value==''){this.value='用户名'}"> 
-				<span id="password_text" onclick="this.style.display='none';document.getElementById('password').style.display='block';document.getElementById('password').focus().select();">密码</span>
-				<input name="password" type="password" id="password" style="display: none;"
-					onblur="if(this.value==''){document.getElementById('password_text').style.display='block';this.style.display='none'};" />
+				<input id="password" type="password" name="password" placeholder="密码"/>				
 				<input value="登录" style="width: 100%;" type="submit">
 			</form>
 			<h3>没有账号？>>>>>>>>>>>>>>>>>><a href="toregister">前往注册</a></h3>
