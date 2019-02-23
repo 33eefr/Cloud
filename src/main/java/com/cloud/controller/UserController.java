@@ -76,6 +76,8 @@ public class UserController {
 			
 			userdir.mkdirs();//创建文件夹
 		}
+		
+		
 			return "main";
 		}
 		return "fail";

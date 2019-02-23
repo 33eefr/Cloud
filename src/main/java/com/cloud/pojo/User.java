@@ -1,6 +1,9 @@
 package com.cloud.pojo;
 
 import java.util.Date;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class User {
 	
@@ -13,7 +16,12 @@ public class User {
 	private String email;//邮箱
 	
 	private Date register_time;//注册时间
-
+	
+	private MultipartFile file;//文件
+	
+	private String description;//描述
+	
+	private List<MultipartFile> attachment;//附件
 	
 
 	public int getUser_id() {
@@ -56,6 +64,30 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public List<MultipartFile> getAttachment() {
+		return attachment;
+	}
+
+	public void setAttachment(List<MultipartFile> attachment) {
+		this.attachment = attachment;
 	}
 
 	@Override

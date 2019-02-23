@@ -12,5 +12,6 @@
 	<mappers>
 		<mapper resource="com/cloud/mapper/UserDaoMapper.xml"/>
 		<mapper resource="com/cloud/mapper/FolderDaoMapper.xml"/>
+		<mapper resource="com/cloud/mapper/FileDaoMapper.xml"/>
 	</mappers>
 </configuration>

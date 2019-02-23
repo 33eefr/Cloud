@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloud.dao.FileDao">
+
+	<!-- 添加上传文件到数据库 -->
+	<insert id="insertFile" parameterType="Files">
+		insert into cloud_file (file_name,file_path,user_id)
+		values(#{file_name},#{file_path},#{user_id})
+	</insert>
+</mapper>

@@ -26,10 +26,10 @@
 					<li style="line-height:25px"><a href="#" target="_blank"><img id="photo" src="images/music.png" /></a></li>
 					<li style="line-height:25px"><a href="#" target="_blank"><img id="photo" src="images/video.png" /></a></li>
 					<li style="line-height:25px"><a href="#" target="_blank"><img id="photo" src="images/download.png" /></a></li> -->
-					<li style="line-height:50px"><a href="file://localhost/D:\cloud\?${sessionScope.user.user_id}\photo"target="abc">图片</a></li>
+					<li style="line-height:50px"><a href="#" target="abc">图片</a></li>
 					<li style="line-height:50px"><a href="#" target="abc">音频</a></li>
 					<li style="line-height:50px"><a href="#" target="abc">视频</a></li>
-					<li style="line-height:50px"><a href="#" target="abc">压缩包</a></li>
+					<li style="line-height:50px"><a href="#" target="abc">文本文档</a></li>
 				</ul></div>
 			<div id="rightDiv">
 				<div id="topDiv">
@@ -38,11 +38,11 @@
 				<div id="bottomDiv">					
 					<ul style="margin-left:5px;">
 						<li class="li">
-							<form action="upload" method="post" enctype="multipart/form-data">
+							<form action="uploadMultiple" method="post" target="abc" enctype="multipart/form-data">
+								<input type="hidden" name="user_id" value="${sessionScope.user.user_id}">
 								用户名:<input type="text" name="userName" value="admin"/><br><br>
-								头像：<input type="file" name="userHeader" id="userHeader" /><br><br>
-								描述：<textarea rows="4" cols="30" name="description" id="userHeader"></textarea><br><br>
-								<input type="submit" value="上传文件" />
+								附件：<input type="file" name="attachment" multiple="multiple" /><br><br>
+								<input type="submit" value="提交" />
 							</form>
 						</li>
 						<li class="li">

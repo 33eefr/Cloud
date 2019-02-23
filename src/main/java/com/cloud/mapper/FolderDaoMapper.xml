@@ -2,20 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cloud.dao.FolderDao">
 	
-	<resultMap id="FolderResultMap" type="Folder">
-		<id property="dir_id" column="dir_id" />
-		<result property="dir_name" column="dir_name" />
-		<result property="parent_dir" column="parent_dir" />
-		<result property="dir_path" column="dir_path" />
-		
-		<association property="createUser" javaType="User">
-			<id property="user_id" column="dir_user_id" />
-		</association>
-	</resultMap>
-	
 	<insert id="addFolder" parameterType="Folder" useGeneratedKeys="true">
-		INSERT INTO cloud_dir (dir_name,parent_dir,dir_user_id,dir_path)
-		VALUES (#{dir_name},#{parent_dir},#{dir_user_id},#{dir_path})
+		INSERT INTO cloud_dir (dir_name，dir_path)
+		VALUES (#{dir_name},#{dir_path})
 	</insert>
 	
 </mapper>
