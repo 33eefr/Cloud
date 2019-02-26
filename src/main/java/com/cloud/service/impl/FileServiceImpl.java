@@ -1,5 +1,7 @@
 package com.cloud.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +18,34 @@ public class FileServiceImpl implements FileService {
 		
 		fileDao.insertFile(files);	
 	}
+	
+	@Override
+	public List<Files> selectFileName(Integer user_id) {
+		
+		return fileDao.selectFileName(user_id);
+	}
+	@Override
+	public List<Files> selectImagesFileName(Integer user_id) {
+		List<Files> imagesFileName =fileDao.selectImagesFileName(user_id);
+		return imagesFileName;
+	}
+	@Override
+	public List<Files> selectVideoFileName(Integer user_id) {
+		List<Files> videoFileName = fileDao.selectVideoFileName(user_id);
+		return videoFileName;
+	}
+	@Override
+	public List<Files> selectTxtFileName(Integer user_id) {
+		List<Files> txtFileName = fileDao.selectTxtFileName(user_id);
+		return txtFileName;
+	}
+	@Override
+	public List<Files> selectMusicFileName(Integer user_id) {
+		List<Files> musicFileName = fileDao.selectMusicFileName(user_id);
+		return musicFileName;
+	}
+
+
+
 
 }

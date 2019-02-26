@@ -1,6 +1,6 @@
 package com.cloud.dao;
 
-import java.io.*;//导入所需的包
+/*import java.io.*;//导入所需的包
 public class Demo {//类
 	public static void main(String[] args){//主程序，程序入口
 		File file=new File("D:\\Qiju_Li");
@@ -16,5 +16,22 @@ public class Demo {//类
 			e.printStackTrace();
 		}
 	}
-}
+}*/
+package com.datongsoft.wg.common.util;
 
+import java.net.InetAddress;
+public class GetIP {
+ 
+    /**
+     * @param args
+     * @throws Exception
+     */
+    public static void main(String[] args) throws Exception {
+         InetAddress addr = InetAddress.getLocalHost();  
+         String ip=addr.getHostAddress().toString(); //获取本机ip  
+         String hostName=addr.getHostName().toString(); //获取本机计算机名称  
+         System.out.println(ip);
+         System.out.println(hostName);
+    }
+ 
+}

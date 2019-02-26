@@ -5,25 +5,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>展示所有文件</title>
+<title>Insert title here</title>
 </head>
 <body>
-	上传成功
-	<table>
-		<c:if test="${not empty fileNames}">
-		<c:forEach items= "${fileNames}" var="fileNames">
+	<c:if test="${not empty musicFileName }">
+		<c:forEach items="${musicFileName}" var="musicFileName">
+		<table>
 			<tr>
 				<td>
-					<a href="download?fileName=${fileNames.file_name}&user_id=${sessionScope.user.user_id}">${fileNames.file_name}</a>
-				</td>
-				<td>
-					<a href="share?fileName=${fileNames.file_name}&user_id=${sessionScope.user.user_id}">分享链接</a>
+				<a href="download?fileName=${musicFileName.file_name}&user_id=${sessionScope.user.user_id}">${musicFileName.file_name}</a>
+				<a href="share?fileName=${musicFileName.file_name}&user_id=${sessionScope.user.user_id}">分享链接</a>
 				</td>
 			</tr>
+		</table>
 		</c:forEach>
-		</c:if>
-	</table>
-		
-	
+	</c:if>
 </body>
 </html>

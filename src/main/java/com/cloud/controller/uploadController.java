@@ -4,12 +4,13 @@ package com.cloud.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
@@ -40,7 +41,8 @@ public class uploadController {
 	 * 上传文件
 	 */
 	@RequestMapping(value="uploadMultiple",method=RequestMethod.POST)
-	public String uploadMultiple(User user,Files files,HttpServletRequest request,Map<String,Object> map) throws IllegalStateException, IOException {
+	public String uploadMultiple(User user,Files files,HttpServletRequest request,
+			HttpServletResponse response,Map<String,Object> map) throws IllegalStateException, IOException {
 		//获取attachment对象
 		List<MultipartFile> attachment = user.getAttachment();
 		List<String> fileNames = new ArrayList<String>();
@@ -101,16 +103,74 @@ public class uploadController {
 			map.put("fileNames", fileNames);
 			
 		}
+		return "main";
+	}
+
+
+	//查询所有上传文件
+	@RequestMapping(value="/selectFileName")
+	public String selectFileName(Files files,Map<String,Object> map,@RequestParam("user_id") Integer user_id) {
+		
+		List<Files> fileNames = fileService.selectFileName(user_id);
+		map.put("fileNames", fileNames);
 		return "showFile";
+	}
+	//查询所有images下文件
+	@RequestMapping(value="/selectImagesFileName")
+	public String selectImagesFileName(Files files,Map<String,Object> map,@RequestParam("user_id") Integer user_id) {
+		
+		List<Files> imagesFileName = fileService.selectImagesFileName(user_id);
+		map.put("imagesFileName", imagesFileName);
+		return "showImage";
+	}
+	//查询所有video下文件
+	@RequestMapping(value="/selectVideoFileName")
+	public String selectVideoFileName(Files files,Map<String,Object> map,@RequestParam("user_id") Integer user_id) {
+		
+		List<Files> videoFileName = fileService.selectVideoFileName(user_id);
+		map.put("videoFileName", videoFileName);
+		return "showVideo";
+	}
+	//查询所有txt下文件
+	@RequestMapping(value="/selectTxtFileName")
+	public String selectTxtFileName(Files files,Map<String,Object> map,@RequestParam("user_id") Integer user_id) {
+		
+		List<Files> txtFileName = fileService.selectTxtFileName(user_id);
+		map.put("txtFileName", txtFileName);
+		return "showTxt";
+	}
+	//查询所有music下文件
+	@RequestMapping(value="/selectMusicFileName")
+	public String selectMusicFileName(Files files,Map<String,Object> map,@RequestParam("user_id") Integer user_id) {
+		
+		List<Files> musicFileName = fileService.selectMusicFileName(user_id);
+		map.put("musicFileName", musicFileName);
+		return "showMusic";
 	}
 	/*
 	 * 
 	 * 下载文件
 	 */
 	@RequestMapping(value="/download")
-	public ResponseEntity<byte[]> download(HttpServletRequest request,
-			@RequestParam("fileName") String fileName) throws Exception{
-		String path = request.getServletContext().getRealPath("/image/");
+	public ResponseEntity<byte[]> download(User user,HttpServletRequest request,
+			@RequestParam("fileName") String fileName,@RequestParam("user_id") Integer user_id) throws Exception{
+		
+		String prefixName = FilenameUtils.getExtension(fileName);
+		//前端获取user_id
+		System.out.println(user_id);
+		String path = "";
+			if(prefixName.equalsIgnoreCase("jpg")||prefixName.equalsIgnoreCase("png")) {
+				path = "D:\\cloud"+File.separator+user_id+File.separator+"images";
+			}
+			if(prefixName.equalsIgnoreCase("mp3")){
+				path = "D:\\cloud"+File.separator+user_id+File.separator+"music";
+			}
+			if(prefixName.equalsIgnoreCase("mp4")) {
+				path = "D:\\cloud"+File.separator+user_id+File.separator+"video";	
+			}
+			if(prefixName.equalsIgnoreCase("txt")) {
+				path = "D:\\cloud"+File.separator+user_id+File.separator+"txt";
+			}
 		File file = new File(path+File.separator+fileName);
 		HttpHeaders headers = new HttpHeaders();
 		String downloadFileName = new String(fileName.getBytes("UTF-8"),"iso-8859-1");
@@ -122,6 +182,40 @@ public class uploadController {
 		
 		return responseEntity;
 	}
+	/*
+	 * 2019-2-25
+	 * 外链分享
+	 * 
+	 */
+	@SuppressWarnings("static-access")
+	@RequestMapping("/share")
+	public String share(@RequestParam("fileName") String fileName,
+			@RequestParam("user_id") Integer user_id,Map<String,Object> map) {
+		
+		 InetAddress ia=null;
+	        try {
+	            ia=ia.getLocalHost();
+	            
+	            String localname=ia.getHostName();
+	            String localip=ia.getHostAddress();
+	            System.out.println("本机名称是："+ localname);
+	            System.out.println("本机的ip是 ："+localip);
+	            map.put("localname", localname);
+	            map.put("localip", localip);
+	            System.out.println(user_id);
+	            String path = "http://"+localip+":8080/cloud/download?fileName="+fileName+"&user_id="+user_id;
+	            map.put("path", path);
+	            System.out.println(path);
+	           
+	        } catch (Exception e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        }
+	        return "shareFile";
+	    }
+		
+		
+	
 	
 	
 }

@@ -20,16 +20,16 @@
 			<div id="leftDiv">
 				<p style="margin-left: 20px;"><strong> welcome,${sessionScope.user.username}! </strong></p>
 				<p style="margin-left: 35px;font-size:20px"><a href="showUser">用户管理</a></p> 
-				<p style="margin-left: 35px;font-size:20px">文件管理</p>
+				<p style="margin-left: 35px;font-size:20px"><a href="selectFileName?user_id=${sessionScope.user.user_id}" target="abc">文件管理</a></p>
 				<ul style="font-color:write;font-size:20px">
 					<!-- <li style="line-height:25px"><a href="#" target="abc"><img id="photo" src="images/photo.png" /></a></li>
 					<li style="line-height:25px"><a href="#" target="_blank"><img id="photo" src="images/music.png" /></a></li>
 					<li style="line-height:25px"><a href="#" target="_blank"><img id="photo" src="images/video.png" /></a></li>
 					<li style="line-height:25px"><a href="#" target="_blank"><img id="photo" src="images/download.png" /></a></li> -->
-					<li style="line-height:50px"><a href="#" target="abc">图片</a></li>
-					<li style="line-height:50px"><a href="#" target="abc">音频</a></li>
-					<li style="line-height:50px"><a href="#" target="abc">视频</a></li>
-					<li style="line-height:50px"><a href="#" target="abc">文本文档</a></li>
+					<li style="line-height:50px"><a href="selectImagesFileName?user_id=${sessionScope.user.user_id}" target="abc">图片</a></li>
+					<li style="line-height:50px"><a href="selectMusicFileName?user_id=${sessionScope.user.user_id}" target="abc">音频</a></li>
+					<li style="line-height:50px"><a href="selectVideoFileName?user_id=${sessionScope.user.user_id}" target="abc">视频</a></li>
+					<li style="line-height:50px"><a href="selectTxtFileName?user_id=${sessionScope.user.user_id}" target="abc">文本文档</a></li>
 				</ul></div>
 			<div id="rightDiv">
 				<div id="topDiv">
@@ -38,7 +38,7 @@
 				<div id="bottomDiv">					
 					<ul style="margin-left:5px;">
 						<li class="li">
-							<form action="uploadMultiple" method="post" target="abc" enctype="multipart/form-data">
+							<form action="uploadMultiple" method="post" enctype="multipart/form-data">
 								<input type="hidden" name="user_id" value="${sessionScope.user.user_id}">
 								用户名:<input type="text" name="userName" value="admin"/><br><br>
 								附件：<input type="file" name="attachment" multiple="multiple" /><br><br>
@@ -56,7 +56,7 @@
 				</div>
 			</div>
 			<div id="clearBoth"></div>
-			<div id="footDiv">底部div</div>
+			<div id="footDiv"><p style="text-align: center;">ZZGY-QST-Java一班—一组Cloud-Disk</p></div>
 		</div>
 	</div>
 </body>

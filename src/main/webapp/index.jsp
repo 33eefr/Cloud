@@ -4,12 +4,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">
+	div{
+		margin-top: 200px;
+	}
+</style>
 <title>首页</title>
 </head>
 <body>
-	Hello，欢迎<br><br>
-	<a href="tologin">前往登录</a>
-	<br><br>
-	<a href="toregister">前往注册</a>
+	<center>
+		<div>
+			Hello，欢迎访问！<br><br>
+			<a href="tologin"><img alt="前往登录" src="images/login.jpg"></a>
+			<br><br>
+			<a href="toregister"><img alt="前往注册" src="images/register.jpg"></a>
+		</div>
+	</center>
 </body>
 </html>
