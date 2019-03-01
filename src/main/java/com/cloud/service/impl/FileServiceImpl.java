@@ -45,6 +45,24 @@ public class FileServiceImpl implements FileService {
 		return musicFileName;
 	}
 
+	@Override
+	public int deleteFile(Integer file_id) {
+		int i = fileDao.deleteFile(file_id);
+		return i;
+	}
+
+	@Override
+	public String selectFilePath(Integer file_id) {
+		String filePath = fileDao.selectFilePath(file_id);
+		return filePath;
+	}
+
+	@Override
+	public int updateFilePath(Files files) {
+		int i = fileDao.updateFilePath(files);
+		return i;
+	}
+
 
 
 

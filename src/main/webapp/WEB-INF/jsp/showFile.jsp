@@ -5,6 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">
+	a{
+		text-decoration:none;
+	}
+</style>
 <title>展示所有文件</title>
 </head>
 <body>
@@ -15,6 +20,9 @@
 			<tr>
 				<td>
 					<a href="download?fileName=${fileNames.file_name}&user_id=${sessionScope.user.user_id}">${fileNames.file_name}</a>
+				</td>
+				<td>
+					<a href="deleteFile/${fileNames.file_id}?file_id=${fileNames.file_id}&fileName=${fileNames.file_name}">删除</a>
 				</td>
 				<td>
 					<a href="share?fileName=${fileNames.file_name}&user_id=${sessionScope.user.user_id}">分享链接</a>

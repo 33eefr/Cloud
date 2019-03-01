@@ -74,7 +74,6 @@
 				<tr>
 					<td>
 						<input type="submit" value="退出登录">
-						<a href="tomain">返回首页</a>
 					</td>
 				</tr>
 			</table>

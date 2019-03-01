@@ -4,6 +4,7 @@ package com.cloud.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +33,7 @@ import com.cloud.pojo.Files;
 
 @Controller
 
-public class uploadController {
+public class UploadController {
 
 	@Autowired
 	private FileService fileService;
@@ -103,11 +104,22 @@ public class uploadController {
 			map.put("fileNames", fileNames);
 			
 		}
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out;
+		out = response.getWriter();
+		out.flush();
+	    out.println("<script>");
+	    out.println("alert('文件上传成功！');");
+	    out.println("history.back();");
+	    out.println("</script>");
 		return "main";
 	}
 
-
-	//查询所有上传文件
+	
+	/*
+	 * 
+	 * 查询所有上传文件
+	 */
 	@RequestMapping(value="/selectFileName")
 	public String selectFileName(Files files,Map<String,Object> map,@RequestParam("user_id") Integer user_id) {
 		
@@ -115,7 +127,10 @@ public class uploadController {
 		map.put("fileNames", fileNames);
 		return "showFile";
 	}
-	//查询所有images下文件
+	/*
+	 * 
+	 * 查询所有images下文件
+	 */
 	@RequestMapping(value="/selectImagesFileName")
 	public String selectImagesFileName(Files files,Map<String,Object> map,@RequestParam("user_id") Integer user_id) {
 		
@@ -123,7 +138,10 @@ public class uploadController {
 		map.put("imagesFileName", imagesFileName);
 		return "showImage";
 	}
-	//查询所有video下文件
+	/*
+	 * 
+	 * 查询所有video下文件
+	 */
 	@RequestMapping(value="/selectVideoFileName")
 	public String selectVideoFileName(Files files,Map<String,Object> map,@RequestParam("user_id") Integer user_id) {
 		
@@ -131,7 +149,10 @@ public class uploadController {
 		map.put("videoFileName", videoFileName);
 		return "showVideo";
 	}
-	//查询所有txt下文件
+	/*
+	 * 
+	 * 查询所有txt下文件
+	 */
 	@RequestMapping(value="/selectTxtFileName")
 	public String selectTxtFileName(Files files,Map<String,Object> map,@RequestParam("user_id") Integer user_id) {
 		
@@ -139,13 +160,67 @@ public class uploadController {
 		map.put("txtFileName", txtFileName);
 		return "showTxt";
 	}
-	//查询所有music下文件
+	/*
+	 * 
+	 * 查询所有music下文件
+	 */
 	@RequestMapping(value="/selectMusicFileName")
 	public String selectMusicFileName(Files files,Map<String,Object> map,@RequestParam("user_id") Integer user_id) {
 		
 		List<Files> musicFileName = fileService.selectMusicFileName(user_id);
 		map.put("musicFileName", musicFileName);
 		return "showMusic";
+	}
+	/*
+	 * 
+	 * 删除指定文件
+	 */
+	@RequestMapping("/deleteFile/{file_id}")
+	public String deleteFile(@RequestParam("file_id") Integer file_id,@RequestParam("fileName") String fileName,
+			HttpServletResponse response) throws IOException {
+		
+		String filePath = fileService.selectFilePath(file_id);
+		FileUtils.deleteQuietly(new File(filePath+File.separator+fileName));
+		int i = fileService.deleteFile(file_id);
+		System.out.println("成功删除"+i+"个文件");
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out;
+		out = response.getWriter();
+		out.flush();
+	    out.println("<script>");
+	    out.println("alert('文件删除成功！');");
+	    out.println("history.back();");
+	    out.println("</script>");
+		return "main";
+	}
+	/*
+	 * 复制文件到指定文件夹
+	 */
+	@RequestMapping("/move")
+	public String move(Files files,@RequestParam("fileName") String fileName,
+			HttpServletRequest request,
+			HttpServletResponse response) throws IOException{
+		String user_id = request.getParameter("user_id");
+		String fileid = request.getParameter("file_id");
+		int file_id = Integer.parseInt(fileid);
+		String filePath = fileService.selectFilePath(file_id);
+		String folderName = request.getParameter("folderName");
+		String file_path = "D:\\cloud"+File.separator+user_id+File.separator+folderName;
+		
+		FileUtils.moveFileToDirectory(new File(filePath+File.separator+fileName), new File(file_path), file_path.isEmpty());
+		files.setFile_id(file_id);
+		files.setFile_path(file_path);
+		int i = fileService.updateFilePath(files);
+		System.out.println("移动"+i+"个文件到"+folderName);
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out;
+		out = response.getWriter();
+		out.flush();
+	    out.println("<script>");
+	    out.println("alert('文件移动成功！');");
+	    out.println("history.back();");
+	    out.println("</script>");
+		return "main";
 	}
 	/*
 	 * 
@@ -158,6 +233,7 @@ public class uploadController {
 		String prefixName = FilenameUtils.getExtension(fileName);
 		//前端获取user_id
 		System.out.println(user_id);
+		//根据文件后缀确定下载路径
 		String path = "";
 			if(prefixName.equalsIgnoreCase("jpg")||prefixName.equalsIgnoreCase("png")) {
 				path = "D:\\cloud"+File.separator+user_id+File.separator+"images";
@@ -203,7 +279,7 @@ public class uploadController {
 	            map.put("localname", localname);
 	            map.put("localip", localip);
 	            System.out.println(user_id);
-	            String path = "http://"+localip+":8080/cloud/download?fileName="+fileName+"&user_id="+user_id;
+	            String path = "http://192.168.22.165:8080/cloud/download?fileName="+fileName+"&user_id="+user_id;
 	            map.put("path", path);
 	            System.out.println(path);
 	           

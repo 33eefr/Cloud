@@ -138,23 +138,5 @@ public class UserController {
 		return "redirect:/showUser";
 		
 	}
-	/*
-	 * 2019/2/22
-	 * 在用户目录下新建文件夹
-	 */
-	@RequestMapping("/createDir")
-	public String creatDir(User user,HttpServletRequest request) {
-		String user_id = request.getParameter("user_id");
-		String folderName = request.getParameter("folderName");
-		String userPath = "D:\\cloud"+File.separator+user_id+File.separator+folderName;
-		
-		File userdir=new File(userPath);
-		
-		if(!userdir.exists()){//如果文件夹不存在
-			
-			userdir.mkdirs();//创建文件夹
-		}
-		System.out.println(folderName+"创建成功");
-		return "main";		
-	}
+	
 }

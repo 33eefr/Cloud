@@ -10,20 +10,22 @@
 		text-decoration:none;
 	}
 </style>
-<title>Insert title here</title>
+<title>文件夹</title>
 </head>
 <body>
-	<c:if test="${not empty txtFileName }">
-		<c:forEach items="${txtFileName}" var="txtFileName">
-		<table>
+	<table>
+		<c:if test="${not empty folders}">
+		<c:forEach items= "${folders}" var="folders">
 			<tr>
 				<td>
-				<a href="download?fileName=${txtFileName.file_name}&user_id=${sessionScope.user.user_id}">${txtFileName.file_name}</a>
-				<a href="share?fileName=${txtFileName.file_name}&user_id=${sessionScope.user.user_id}">分享链接</a>
+					<a href="showFiles?dir_id=${folders.dir_id}">${folders.dir_name}</a>
+				</td>
+				<td>	
+					<a href="deleteFolder/${folders.dir_id}?dir_id=${folders.dir_id}">删除</a>
 				</td>
 			</tr>
-		</table>
 		</c:forEach>
-	</c:if>
+		</c:if>
+	</table>
 </body>
 </html>

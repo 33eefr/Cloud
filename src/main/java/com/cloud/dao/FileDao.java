@@ -24,4 +24,10 @@ public interface FileDao {
 	public List<Files> selectTxtFileName(Integer user_id);
 	//查询music下的文件名
 	public List<Files> selectMusicFileName(Integer user_id);
+	//删除文件
+	public int deleteFile(Integer file_id);
+	//查询文件所在路径
+	public String selectFilePath(Integer file_id);
+	//修改文件路径
+	public int updateFilePath(Files files);
 }

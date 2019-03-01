@@ -9,25 +9,41 @@
 	</insert>
 	<!-- 查询文件名 -->
 	<select id="selectFileName" resultType="Files">
-		select file_name from cloud_file where user_id=#{user_id}
+		select * from cloud_file where user_id=#{user_id}
 	</select>
+	<!-- 查询当前用户所有图片 -->
 	<select id="selectImagesFileName" resultType="Files">
-		select file_name from cloud_file
+		select * from cloud_file
 		where file_path like '%images%' and user_id=#{user_id}
 	</select>
-	
+	<!-- 查询当前用户所有视频 -->
 	<select id="selectVideoFileName" resultType="Files">
-		select file_name from cloud_file
+		select * from cloud_file
 		where file_path like '%video%' and user_id=#{user_id}
 	</select>
-	
+	<!-- 查询当前用户所有文本文档 -->
 	<select id="selectTxtFileName" resultType="Files">
-		select file_name from cloud_file
+		select * from cloud_file
 		where file_path like '%txt%' and user_id=#{user_id}
 	</select>
-	
+	<!-- 查询当前用户所有音频 -->
 	<select id="selectMusicFileName" resultType="Files">
-		select file_name from cloud_file
+		select * from cloud_file
 		where file_path like '%music%' and user_id=#{user_id}
 	</select>
+	<!-- 删除当前用户指定文件 -->
+	<delete id="deleteFile" parameterType="Integer">
+		delete from cloud_file 
+		where file_id=#{file_id}
+	</delete>
+	<!-- 查询文件所在路径 -->
+	<select id="selectFilePath" resultType="String">
+		select file_path from cloud_file
+		where file_id=#{file_id}
+	</select>
+	<!-- 修改文件路径 -->
+	<update id="updateFilePath" parameterType="Files">
+		update cloud_file set file_path=#{file_path} 
+		where file_id=#{file_id}
+	</update>
 </mapper>

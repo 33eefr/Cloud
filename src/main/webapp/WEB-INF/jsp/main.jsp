@@ -7,7 +7,6 @@
 <title>咕咕云盘</title>
 <link type="text/css" rel="stylesheet" href="css/style.css">
 <style type="text/css">
-	
 </style>
 </head>
 <body style="background-image: url('images/background.jpg');">
@@ -19,8 +18,10 @@
 		<div id="middleDiv">
 			<div id="leftDiv">
 				<p style="margin-left: 20px;"><strong> welcome,${sessionScope.user.username}! </strong></p>
-				<p style="margin-left: 35px;font-size:20px"><a href="showUser">用户管理</a></p> 
+				<a href="outLogin" style="margin-left: 30px;">退出当前用户</a>
+				<p style="margin-left: 35px;font-size:20px"><a href="showUser" target="abc">用户管理</a></p> 
 				<p style="margin-left: 35px;font-size:20px"><a href="selectFileName?user_id=${sessionScope.user.user_id}" target="abc">文件管理</a></p>
+				<p style="margin-left: 35px;font-size:20px"><a href="showFolder?user_id=${sessionScope.user.user_id}" target="abc">文件夹</a></p>
 				<ul style="font-color:write;font-size:20px">
 					<!-- <li style="line-height:25px"><a href="#" target="abc"><img id="photo" src="images/photo.png" /></a></li>
 					<li style="line-height:25px"><a href="#" target="_blank"><img id="photo" src="images/music.png" /></a></li>
@@ -40,9 +41,9 @@
 						<li class="li">
 							<form action="uploadMultiple" method="post" enctype="multipart/form-data">
 								<input type="hidden" name="user_id" value="${sessionScope.user.user_id}">
-								用户名:<input type="text" name="userName" value="admin"/><br><br>
+								用户名:<input type="text" name="userName" value="${sessionScope.user.username}"/><br><br>
 								附件：<input type="file" name="attachment" multiple="multiple" /><br><br>
-								<input type="submit" value="提交" />
+								<input style="margin-left: 120px;" type="submit" value="提交" />
 							</form>
 						</li>
 						<li class="li">
@@ -51,12 +52,15 @@
 								文件夹名：<input type="text" name="folderName">
 								<input type="submit" value="新建文件夹">
 							</form>
+							
 						</li>
 					</ul>
 				</div>
 			</div>
 			<div id="clearBoth"></div>
-			<div id="footDiv"><p style="text-align: center;">ZZGY-QST-Java一班—一组Cloud-Disk</p></div>
+			<div id="footDiv">
+				<p style="text-align: center;">ZZGY-QST-Java一班—一组Cloud-Disk</p>
+			</div>
 		</div>
 	</div>
 </body>

@@ -3,8 +3,29 @@
 <mapper namespace="com.cloud.dao.FolderDao">
 	
 	<insert id="addFolder" parameterType="Folder" useGeneratedKeys="true">
-		INSERT INTO cloud_dir (dir_name，dir_path)
-		VALUES (#{dir_name},#{dir_path})
+		INSERT INTO cloud_dir (dir_name,dir_path,user_id)
+		VALUES (#{dir_name},#{dir_path},#{user_id})
 	</insert>
-	
+	<!-- 文件夹展示 -->
+	<select id="showFolder" resultType="Folder">
+		select *
+		from cloud_dir where user_id=#{user_id}
+	</select>
+	<!-- 文件夹内文件显示 -->
+	<select id="selectFiles" resultType="Files" parameterType="Integer">
+		select *
+		from cloud_dir d,cloud_file f
+		where d.dir_path=f.file_path and d.dir_id=#{dir_id}
+	</select>
+	<select id="selectOne" resultType="Folder">
+		select * from cloud_dir
+		where dir_id=#{dir_id}
+	</select>
+	<delete id="deleteFolder" parameterType="Integer">
+		delete from cloud_dir where dir_id=#{dir_id}
+	</delete>
+	<select id="selectDirPath" resultType="String">
+		select dir_path from cloud_dir
+		where dir_id=#{dir_id}
+	</select>
 </mapper>

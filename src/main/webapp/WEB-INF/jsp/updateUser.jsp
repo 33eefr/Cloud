@@ -72,6 +72,7 @@ table {
 					<td colspan="2" style="text-align: center;">
 						<input type="submit" value="更新" />
 						<input type="reset" value="重置"/>
+						<a href="${pageContext.request.contextPath}/showUser">取消</a>
 					</td>
 				</tr>
 			</table>

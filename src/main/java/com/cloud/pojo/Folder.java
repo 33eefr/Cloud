@@ -6,9 +6,9 @@ public class Folder {
 	
 	private String dir_name;
 	
-	
 	private String dir_path;
 	
+	private Integer user_id;
 
 
 	public Integer getDir_id() {
@@ -27,7 +27,6 @@ public class Folder {
 		this.dir_name = dir_name;
 	}
 
-	
 	public String getDir_path() {
 		return dir_path;
 	}
@@ -35,11 +34,19 @@ public class Folder {
 	public void setDir_path(String dir_path) {
 		this.dir_path = dir_path;
 	}
+	
+	public Integer getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(Integer user_id) {
+		this.user_id = user_id;
+	}
 
 	@Override
 	public String toString() {
-		return "Folder [dir_id=" + dir_id + ", dir_name=" + dir_name + ", dir_path=" + dir_path + "]";
+		return "Folder [dir_id=" + dir_id + ", dir_name=" + dir_name + ", dir_path=" + dir_path + ", user_id=" + user_id
+				+ "]";
 	}
 
-	
 }
