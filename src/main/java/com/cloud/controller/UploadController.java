@@ -2,6 +2,9 @@ package com.cloud.controller;
 
 
 
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -284,14 +287,30 @@ public class UploadController {
 	            System.out.println(path);
 	           
 	        } catch (Exception e) {
-	            // TODO Auto-generated catch block
+	            
 	            e.printStackTrace();
 	        }
 	        return "shareFile";
 	    }
-		
-		
 	
-	
-	
+	@RequestMapping("/copyShare")
+	public String copyShare(HttpServletRequest request) {
+		String sharePath = request.getParameter("share");
+		Clipboard  clip= Toolkit.getDefaultToolkit().getSystemClipboard();  
+	    StringSelection tText = new StringSelection(sharePath);  
+	    clip.setContents(tText, null); 
+		return "shareFile";
+	}
+	/*
+	 * 
+	 * 文件查询
+	 */
+	@RequestMapping("/selectFileById")
+	public String selectFileById(HttpServletRequest request,Map<String,Object> map) {
+		String fileId = request.getParameter("file_id");
+		int file_id = Integer.parseInt(fileId);
+		List<Files> files = fileService.selectFileById(file_id);
+		map.put("files", files);
+		return "selectFile";
+	}
 }

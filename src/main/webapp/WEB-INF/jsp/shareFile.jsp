@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	下载地址：${path}
+	<form action="copyShare" method="post">
+		下载地址：<input type="text" name="share" value="${path}" size="80"/>
+		<input type="submit" value="copy"/>
+	</form>
 </body>
 </html>

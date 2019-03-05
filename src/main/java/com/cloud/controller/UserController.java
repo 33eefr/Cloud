@@ -108,7 +108,7 @@ public class UserController {
 	 * 查询一条数据
 	 * 方便删除/修改获取user_id
 	 */
-	@RequestMapping("/selectOne/{user_id}")
+	@RequestMapping("/selectOneUser/{user_id}")
 	public String selectOne(@PathVariable("user_id") Integer user_id,Map<String,Object> map) {
 		
 		User user = userService.selectOne(user_id);

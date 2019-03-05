@@ -46,4 +46,9 @@
 		update cloud_file set file_path=#{file_path} 
 		where file_id=#{file_id}
 	</update>
+	<!-- 文件查询 -->
+	<select id="selectFileById" resultType="Files">
+		select * from cloud_file 
+		where file_id=#{file_id}
+	</select>
 </mapper>

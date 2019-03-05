@@ -64,7 +64,7 @@
 					<td>${user.register_time}</td>
 					<td> 
 						<a href="deleteUser/${user.user_id}">删除</a>
-						<a href="selectOne/${user.user_id}">修改</a>
+						<a href="selectOneUser/${user.user_id}">修改</a>
 					</td>
 				</tr>
 			</c:forEach>

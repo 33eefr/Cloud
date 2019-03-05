@@ -9,30 +9,31 @@
 		#headerDiv{
 			width:1000px;
 			height:90px;
-			border:1px solid #808080;
+			border:1px solid #00ff00;
+			background-color: #00ff40;
 		}
 		#middleDiv{
 			width: 1000px;
 			height:635px;
-			border:1px solid #808080;
+			border:1px solid #00ff00;
 		}
 		#leftDiv{
 			width: 150px;
 			height: 90%;
-			border:1px solid #808080;
+			border:1px solid #00ff00;
 			float:left;
-			background-color: #c0c0c0;
+			background-color: #ffffff;
 		}
 		#rightDiv{
 			width: 840px;
 			height: 90%;
-			border:1px solid #808080;
+			border:1px solid #00ff40;
 			float:left;
 		}
 		#topDiv{
 			width: 100%;
 			height:60%;
-			border:1px solid #808080;
+			border:1px solid #80ff80;
 		}
 		#bottomDiv{
 			width: 100%;
@@ -81,4 +82,5 @@
 		}
 		#banner{
 			width:1000px;
+			height: 89px;
 		}

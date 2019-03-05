@@ -63,6 +63,12 @@ public class FileServiceImpl implements FileService {
 		return i;
 	}
 
+	@Override
+	public List<Files> selectFileById(Integer file_id) {
+		List<Files> files = fileDao.selectFileById(file_id);
+		return files;
+	}
+
 
 
 

@@ -30,4 +30,6 @@ public interface FileDao {
 	public String selectFilePath(Integer file_id);
 	//修改文件路径
 	public int updateFilePath(Files files);
+	//文件查询
+	public List<Files> selectFileById(Integer file_id);
 }
