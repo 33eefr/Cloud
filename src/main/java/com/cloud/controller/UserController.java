@@ -22,7 +22,7 @@ import com.cloud.pojo.User;
 public class UserController {
 	/*
 	 * 控制层方法
-	 * 程士豪
+	 * csh
 	 * 
 	 */
 	@Autowired
@@ -68,16 +68,16 @@ public class UserController {
 		if(user != null){
 			session.setAttribute("user",user);
 		//登录同时创建以user_id命名的文件夹   2019/2/22
-		String userPath = "D:\\cloud"+File.separator+user.getUser_id();
+/*		String userPath = "E:\\cloud"+File.separator+user.getUser_id();
 		
 		File userdir=new File(userPath);
 		
 		if(!userdir.exists()){//如果文件夹不存在
 			
 			userdir.mkdirs();//创建文件夹
-		}
+		}*/
 		
-		
+			//无需创建文件夹，直接放在指定目录下
 			return "main";
 		}
 		return "fail";

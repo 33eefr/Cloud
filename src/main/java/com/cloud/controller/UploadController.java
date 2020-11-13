@@ -31,6 +31,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.cloud.pojo.User;
 import com.cloud.service.FileService;
+import com.cloud.util.FileType;
 import com.cloud.pojo.Files;
 
 
@@ -70,37 +71,41 @@ public class UploadController {
 				multipartFile.transferTo(target);
 				fileNames.add(fileName);
 				//前端获取user_id
-				String user_id = request.getParameter("user_id");
-				//获取文件的后缀
-				String prefixName = FilenameUtils.getExtension(fileName);
+				//String user_id = request.getParameter("user_id");
+				//获取文件的后缀(全部小写)
+				String prefixName = FilenameUtils.getExtension(fileName).toLowerCase();
+				//根据后缀判断文件类型
+				String file_type = FileType.checnkFileType(prefixName);
+				String file_path = "E:\\cloud"+File.separator;
+				File newFilePath = new File(file_path);
+				FileUtils.copyFileToDirectory(target, newFilePath);
 				
-				String file_path = "";
-				//根据后缀判断将文件放入不同路径
+				/*//根据后缀判断将文件放入不同路径
 				if(prefixName.equalsIgnoreCase("jpg")||prefixName.equalsIgnoreCase("png")) {
-					file_path = "D:\\cloud"+File.separator+user_id+File.separator+"images";
+					file_path = "E:\\cloud"+File.separator+user_id+File.separator+"images";
 					File photoSrcPath = new File(file_path);
 					FileUtils.copyFileToDirectory(target, photoSrcPath);
 				}
 				if(prefixName.equalsIgnoreCase("mp3")){
-					file_path = "D:\\cloud"+File.separator+user_id+File.separator+"music";
+					file_path = "E:\\cloud"+File.separator+user_id+File.separator+"music";
 					File musucSrcPath = new File(file_path);
 					FileUtils.copyFileToDirectory(target, musucSrcPath);
 				}
 				if(prefixName.equalsIgnoreCase("mp4")) {
-					file_path = "D:\\cloud"+File.separator+user_id+File.separator+"video";
+					file_path = "E:\\cloud"+File.separator+user_id+File.separator+"video";
 					File videoSrcPath = new File(file_path);
 					FileUtils.copyFileToDirectory(target, videoSrcPath);
 				}
 				if(prefixName.equalsIgnoreCase("txt")) {
-					file_path = "D:\\cloud"+File.separator+user_id+File.separator+"txt";
+					file_path = "E:\\cloud"+File.separator+user_id+File.separator+"txt";
 					File txtSrcPath = new File(file_path);
 					FileUtils.copyFileToDirectory(target, txtSrcPath);
-				}
+				}*/
 				//将文件名、文件路径和用户id放入数据库
 				files.setFile_name(fileName);
 				files.setUser_id(user.getUser_id());
 				files.setFile_path(file_path);
-				
+				files.setFile_type(file_type);
 				fileService.insertFile(files);
 				
 			}
@@ -126,13 +131,21 @@ public class UploadController {
 	@RequestMapping(value="/selectFileName")
 	public String selectFileName(Files files,Map<String,Object> map,@RequestParam("user_id") Integer user_id) {
 		
+		List<Files> fileNames = fileService.selectAllFileName();
+		map.put("fileNames", fileNames);
+		return "showFile";
+	}
+/*	@RequestMapping(value="/selectFileName")
+	public String selectFileName(Files files,Map<String,Object> map,@RequestParam("user_id") Integer user_id) {
+		
 		List<Files> fileNames = fileService.selectFileName(user_id);
 		map.put("fileNames", fileNames);
 		return "showFile";
 	}
-	/*
+*/	/*
 	 * 
 	 * 查询所有images下文件
+	 * 改为查询所有图片类型的文件
 	 */
 	@RequestMapping(value="/selectImagesFileName")
 	public String selectImagesFileName(Files files,Map<String,Object> map,@RequestParam("user_id") Integer user_id) {
@@ -208,7 +221,7 @@ public class UploadController {
 		int file_id = Integer.parseInt(fileid);
 		String filePath = fileService.selectFilePath(file_id);
 		String folderName = request.getParameter("folderName");
-		String file_path = "D:\\cloud"+File.separator+user_id+File.separator+folderName;
+		String file_path = "E:\\cloud"+File.separator+user_id+File.separator+folderName;
 		
 		FileUtils.moveFileToDirectory(new File(filePath+File.separator+fileName), new File(file_path), file_path.isEmpty());
 		files.setFile_id(file_id);
@@ -239,16 +252,16 @@ public class UploadController {
 		//根据文件后缀确定下载路径
 		String path = "";
 			if(prefixName.equalsIgnoreCase("jpg")||prefixName.equalsIgnoreCase("png")) {
-				path = "D:\\cloud"+File.separator+user_id+File.separator+"images";
+				path = "E:\\cloud"+File.separator+user_id+File.separator+"images";
 			}
 			if(prefixName.equalsIgnoreCase("mp3")){
-				path = "D:\\cloud"+File.separator+user_id+File.separator+"music";
+				path = "E:\\cloud"+File.separator+user_id+File.separator+"music";
 			}
 			if(prefixName.equalsIgnoreCase("mp4")) {
-				path = "D:\\cloud"+File.separator+user_id+File.separator+"video";	
+				path = "E:\\cloud"+File.separator+user_id+File.separator+"video";	
 			}
 			if(prefixName.equalsIgnoreCase("txt")) {
-				path = "D:\\cloud"+File.separator+user_id+File.separator+"txt";
+				path = "E:\\cloud"+File.separator+user_id+File.separator+"txt";
 			}
 		File file = new File(path+File.separator+fileName);
 		HttpHeaders headers = new HttpHeaders();
@@ -282,7 +295,8 @@ public class UploadController {
 	            map.put("localname", localname);
 	            map.put("localip", localip);
 	            System.out.println(user_id);
-	            String path = "http://192.168.22.165:8080/cloud/download?fileName="+fileName+"&user_id="+user_id;
+	            //String path = "http://192.168.22.165:8080/cloud/download?fileName="+fileName+"&user_id="+user_id;
+	            String path = "http://127.0.0.1:8080/cloud/download?fileName="+fileName+"&user_id="+user_id;
 	            map.put("path", path);
 	            System.out.println(path);
 	           
@@ -312,5 +326,13 @@ public class UploadController {
 		List<Files> files = fileService.selectFileById(file_id);
 		map.put("files", files);
 		return "selectFile";
+	}
+	//根据类型查询文件
+	@RequestMapping(value="/selectFileByType")
+	public String selectFileName(Files files,Map<String,Object> map,@RequestParam("file_type")String file_type) {
+		
+		List<Files> fileName = fileService.selectFileByType(file_type);
+		map.put("fileName"+file_type, fileName);
+		return "show"+file_type;
 	}
 }

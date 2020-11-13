@@ -69,6 +69,16 @@ public class FileServiceImpl implements FileService {
 		return files;
 	}
 
+	@Override
+	public List<Files> selectAllFileName() {
+		return fileDao.selectAllFileName();
+	}
+
+	@Override
+	public List<Files> selectFileByType(String file_type) {
+		return fileDao.selectFileByType(file_type);
+	}
+
 
 
 

@@ -56,7 +56,7 @@
 				<img src="images/login_logo.png" />
 			</div>
 			<div class="login_name">
-				<p>咕咕云盘</p>
+				<p>文件系统</p>
 			</div>
 			<form action="register" method="post" name="regForm" onsubmit="return checkForm()">
 				<input name="username" type="text" id="username" value="用户名" onfocus="this.value=''" onblur="if(this.value==''){this.value='用户名'}"> 

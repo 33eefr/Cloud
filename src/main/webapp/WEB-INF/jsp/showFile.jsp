@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link type="text/css" rel="stylesheet" href="css/css.css">
 <style type="text/css">
 	a{
 		text-decoration:none;
@@ -18,6 +19,7 @@
 <body>
 	<center>
 	<table border="1">
+	<caption>所有文件</caption>
 		<tr>
 			<th>文件id</th>
 			<th>文件名</th>

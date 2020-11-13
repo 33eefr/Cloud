@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>咕咕云盘</title>
+<title>文件系统</title>
 <link type="text/css" rel="stylesheet" href="css/style.css">
 <style type="text/css">
 	#img{
@@ -27,11 +27,18 @@
 				<p style="margin-left: 35px;font-size:20px"><a href="selectFileName?user_id=${sessionScope.user.user_id}" target="abc">文件管理</a></p>
 				<ul style="font-color:write;font-size:20px">
 					<li><a href="showFolder?user_id=${sessionScope.user.user_id}" target="abc"><img id="img" src="images/home.jpg" /></a></li>
+					<li style="margin-top: 20px"><a href="selectFileByType?file_type=Image" target="abc"><img id="img" src="images/images.png" /></a></li>
+					<li style="margin-top: 20px"><a href="selectFileByType?file_type=Music" target="abc"><img id="img" src="images/music.png" /></a></li>
+					<li style="margin-top: 20px"><a href="selectFileByType?file_type=Video" target="abc"><img id="img" src="images/video.jpg" /></a></li>
+					<li style="margin-top: 20px"><a href="selectFileByType?file_type=Doc" target="abc"><img id="img" src="images/txt.png" /></a></li>
+					<li style="margin-top: 20px"><a href="selectFileByType?file_type=Other" target="abc"><img id="img" src="images/txt.png" /></a></li>
+<%-- 					<li><a href="showFolder?user_id=${sessionScope.user.user_id}" target="abc"><img id="img" src="images/home.jpg" /></a></li>
 					<li style="margin-top: 20px"><a href="selectImagesFileName?user_id=${sessionScope.user.user_id}" target="abc"><img id="img" src="images/images.png" /></a></li>
 					<li style="margin-top: 20px"><a href="selectMusicFileName?user_id=${sessionScope.user.user_id}" target="abc"><img id="img" src="images/music.png" /></a></li>
 					<li style="margin-top: 20px"><a href="selectVideoFileName?user_id=${sessionScope.user.user_id}" target="abc"><img id="img" src="images/video.jpg" /></a></li>
-					<li style="margin-top: 20px"><a href="selectTxtFileName?user_id=${sessionScope.user.user_id}" target="abc"><img id="img" src="images/txt.png" /></a></li>
-				</ul></div>
+					<li style="margin-top: 20px"><a href="selectTxtFileName?user_id=${sessionScope.user.user_id}" target="abc"><img id="img" src="images/txt.png" /></a></li> --%>
+				</ul>
+			</div>
 			<div id="rightDiv">
 				<div id="topDiv">
 					<iframe width="100%" height="100%" name="abc"></iframe>
@@ -47,14 +54,14 @@
 								<input style="margin-left: 120px;" type="submit" value="提交" />
 							</form>
 						</li>
-						<li class="li">
+<%-- 						<li class="li">
 							<p style="margin-left: 60px">新建文件夹</p>
 							<form action="createDir" method="post">
 								<input type="hidden" name="user_id" value="${sessionScope.user.user_id}">
 								<input type="text" name="folderName" placeholder="请输入文件夹名">
 								<input type="submit" value="新建文件夹">
 							</form>
-						</li><br><br>
+						</li> --%>
 						<li class="li">
 							<p style="margin-left: 60px">查询文件</p>
 							<form action="selectFileById" method="post" target="abc">
@@ -67,7 +74,7 @@
 			</div>
 			<div id="clearBoth"></div>
 			<div id="footDiv">
-				<p style="text-align: center;">ZZGY-QST-Java一班—一组Cloud-Disk</p>
+				<p style="text-align: center;">Cloud-Disk</p>
 			</div>
 		</div>
 	</div>

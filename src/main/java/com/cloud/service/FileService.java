@@ -32,5 +32,10 @@ public interface FileService {
 	public int updateFilePath(Files files);
 	//文件查询
 	public List<Files> selectFileById(Integer file_id);
+	
+	//查询所有文件
+	public List<Files> selectAllFileName();
+	//根据类型查询
+	public List<Files> selectFileByType(String file_type);
 
 }

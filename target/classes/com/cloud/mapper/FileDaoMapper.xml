@@ -4,8 +4,8 @@
 
 	<!-- 添加上传文件到数据库 -->
 	<insert id="insertFile" parameterType="Files">
-		insert into cloud_file (file_name,file_path,user_id)
-		values(#{file_name},#{file_path},#{user_id})
+		insert into cloud_file (file_name,file_path,user_id,file_type)
+		values(#{file_name},#{file_path},#{user_id},#{file_type})
 	</insert>
 	<!-- 查询文件名 -->
 	<select id="selectFileName" resultType="Files">
@@ -50,5 +50,14 @@
 	<select id="selectFileById" resultType="Files">
 		select * from cloud_file 
 		where file_id=#{file_id}
+	</select>
+	
+	<!-- 查询所有文件名 -->
+	<select id="selectAllFileName" resultType="Files">
+		select * from cloud_file
+	</select>
+	<!-- 根据类型查询文件 -->
+	<select id="selectFileByType" resultType="Files">
+		select * from cloud_file where file_type = #{file_type}
 	</select>
 </mapper>

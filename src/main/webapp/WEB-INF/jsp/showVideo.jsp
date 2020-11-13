@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link type="text/css" rel="stylesheet" href="css/css.css">
 <style type="text/css">
 	a{
 		text-decoration:none;
@@ -13,17 +14,31 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:if test="${not empty videoFileName }">
-		<c:forEach items="${videoFileName}" var="videoFileName">
-		<table>
+<center>
+<table border="1">
+	<caption>所有视频</caption>
+	<tr>
+		<th>视频id</th>
+		<th>视频名</th>
+		<th>视频路径</th>
+		<th>上传用户id</th>
+		<th>操作</th>
+	</tr>
+	<c:if test="${not empty fileNameVideo }">
+		<c:forEach items="${fileNameVideo}" var="videoFileName">
 			<tr>
+				<td>${videoFileName.file_id}</td>
 				<td>
-				<a href="download?fileName=${videoFileName.file_name}&user_id=${sessionScope.user.user_id}">${videoFileName.file_name}</a>
+				<a href="download?fileName=${videoFileName.file_name}&user_id=${sessionScope.user.user_id}">${videoFileName.file_name}</a></td>
+				<td>${videoFileName.file_id}</td>
+				<td>${videoFileName.user_id}</td>
+				<td>
 				<a href="share?fileName=${videoFileName.file_name}&user_id=${sessionScope.user.user_id}">分享链接</a>
 				</td>
 			</tr>
-		</table>
 		</c:forEach>
 	</c:if>
+</table>
+</center>
 </body>
 </html>

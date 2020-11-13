@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link type="text/css" rel="stylesheet" href="css/css.css">
 <style type="text/css">
 	a{
 		text-decoration:none;
@@ -13,17 +14,31 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:if test="${not empty imagesFileName }">
-		<c:forEach items="${imagesFileName}" var="imagesFileName">
-		<table>
+<center>
+<table border="1">
+	<caption>所有图片</caption>
+	<tr>
+		<th>图片id</th>
+		<th>图片名</th>
+		<th>图片路径</th>
+		<th>上传用户id</th>
+		<th>操作</th>
+	</tr>
+	<c:if test="${not empty fileNameImage }">
+		<c:forEach items="${fileNameImage}" var="imagesFileName">
 			<tr>
+				<td>${imagesFileName.file_id}</td>
 				<td>
-				<a href="download?fileName=${imagesFileName.file_name}&user_id=${sessionScope.user.user_id}">${imagesFileName.file_name}</a>
+				<a href="download?fileName=${imagesFileName.file_name}&user_id=${sessionScope.user.user_id}">${imagesFileName.file_name}</a></td>
+				<td>${imagesFileName.file_path}</td>
+				<td>${imagesFileName.user_id}</td>
+				<td>
 				<a href="share?fileName=${imagesFileName.file_name}&user_id=${sessionScope.user.user_id}">分享链接</a>
 				</td>
 			</tr>
-		</table>
 		</c:forEach>
 	</c:if>
+</table>
+</center>
 </body>
 </html>

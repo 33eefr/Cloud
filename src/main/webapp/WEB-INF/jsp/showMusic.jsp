@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link type="text/css" rel="stylesheet" href="css/css.css">
 <style type="text/css">
 	a{
 		text-decoration:none;
@@ -13,17 +14,29 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:if test="${not empty musicFileName }">
-		<c:forEach items="${musicFileName}" var="musicFileName">
-		<table>
+<center>
+<table border="1">
+	<caption>所有音乐</caption>
+	<tr>
+		<th>音乐id</th>
+		<th>音乐名</th>
+		<th>音乐路径</th>
+		<th>操作</th>
+	</tr>
+	<c:if test="${not empty fileNameMusic }">
+		<c:forEach items="${fileNameMusic}" var="musicFileName">
 			<tr>
+				<td>${musicFileName.file_id}</td>
 				<td>
-				<a href="download?fileName=${musicFileName.file_name}&user_id=${sessionScope.user.user_id}">${musicFileName.file_name}</a>
+				<a href="download?fileName=${musicFileName.file_name}&user_id=${sessionScope.user.user_id}">${musicFileName.file_name}</a></td>
+				<td>${musicFileName.file_path}</td>
+				<td>
 				<a href="share?fileName=${musicFileName.file_name}&user_id=${sessionScope.user.user_id}">分享链接</a>
 				</td>
 			</tr>
-		</table>
 		</c:forEach>
 	</c:if>
+</table>
+</center>
 </body>
 </html>

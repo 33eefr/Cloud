@@ -6,10 +6,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link type="text/css" rel="stylesheet" href="css/css.css">
 </head>
 <body>
-
-	<table>
+<center>
+	<table border="1">
 		<caption><a href="showFolder?user_id=${sessionScope.user.user_id}">返回上一级</a></caption>
 		<c:if test="${not empty files}">
 		<c:forEach items= "${files}" var="files">
@@ -34,5 +35,6 @@
 		</c:forEach>
 		</c:if>
 	</table>
+</center>
 </body>
 </html>

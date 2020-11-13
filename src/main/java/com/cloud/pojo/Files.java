@@ -9,6 +9,8 @@ public class Files {
 	private String file_path;//文件路径
 	
 	private int user_id;//上传文件用户id
+	
+	private String file_type;//上传文件类型
 
 	public int getFile_id() {
 		return file_id;
@@ -41,11 +43,19 @@ public class Files {
 	public void setUser_id(int user_id) {
 		this.user_id = user_id;
 	}
+	
+	public String getFile_type() {
+		return file_type;
+	}
+	
+	public void setFile_type(String file_type) {
+		this.file_type = file_type;
+	}
 
 	@Override
 	public String toString() {
 		return "Files [file_id=" + file_id + ", file_name=" + file_name + ", file_path=" + file_path + ", user_id="
-				+ user_id + "]";
+				+ user_id + ", file_type=" + file_type + "]";
 	}
 
 	
